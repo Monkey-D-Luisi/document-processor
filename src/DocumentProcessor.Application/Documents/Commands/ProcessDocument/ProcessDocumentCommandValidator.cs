@@ -1,4 +1,4 @@
-using DocumentProcessor.Application.Common.Files;
+using DocumentProcessor.Application.Documents.Files;
 using FluentValidation;
 
 namespace DocumentProcessor.Application.Documents.Commands.ProcessDocument;

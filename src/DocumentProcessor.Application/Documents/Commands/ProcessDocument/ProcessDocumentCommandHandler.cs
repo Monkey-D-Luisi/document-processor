@@ -1,11 +1,12 @@
 using System.Security.Cryptography;
-using DocumentProcessor.Application.Common.Exceptions;
-using DocumentProcessor.Application.Common.Interfaces;
+using DocumentProcessor.Application.Documents.Analysis.Exceptions;
+using DocumentProcessor.Application.Documents.Analysis.Ports;
 using DocumentProcessor.Application.Common.Models;
 using DocumentProcessor.Application.Documents.Models;
-using DocumentProcessor.Application.Documents.Services;
+using DocumentProcessor.Application.Documents.Analysis.Services;
+using DocumentProcessor.Application.Documents.Analysis.Models;
 using DocumentProcessor.Domain.Documents;
-using DocumentProcessor.Domain.Repositories;
+using DocumentProcessor.Domain.Documents.Repositories;
 using MediatR;
 using Microsoft.Extensions.Logging;
 

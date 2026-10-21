@@ -61,6 +61,18 @@ API ------------> Application ------------> Domain
 - Raw uploaded document bytes are **not persisted**.
 - Model output is not trusted as domain state until deterministic validation is applied.
 
+## Feature-oriented layout
+
+The four projects remain the Clean Architecture boundaries. Within them, document code is grouped by feature and use case:
+
+- `Application/Documents/Commands/ProcessDocument` and `Application/Documents/Queries/GetDocument` contain the corresponding use cases.
+- `Application/Documents/Analysis` contains analysis ports, models, exceptions and services; `Application/Documents/Files` contains document upload type and signature validation.
+- `Domain/Documents` contains the document model and its repository port.
+- `Infrastructure/Documents/Analysis` contains the OpenAI adapter and its request/response helpers.
+- `API/Documents/Endpoints` contains the document HTTP endpoints. Test projects mirror these feature and use-case folders.
+
+`Application/Common` is reserved for cross-cutting validation behavior, IoC declarations and generic `Error`/`Result` types. `Infrastructure/Persistence` remains the EF Core boundary for the database context and migration history; keeping its generated migrations in place avoids unrelated migration metadata changes.
+
 ## Why the OpenAI output is a candidate, not a domain object
 
 Structured Outputs constrain the shape of the response, but they do not prove that

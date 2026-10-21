@@ -1,6 +1,6 @@
 using DocumentProcessor.Application.Common.Models;
 using DocumentProcessor.Application.Documents.Models;
-using DocumentProcessor.Domain.Repositories;
+using DocumentProcessor.Domain.Documents.Repositories;
 using MediatR;
 
 namespace DocumentProcessor.Application.Documents.Queries.GetDocument;
