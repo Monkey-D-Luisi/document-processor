@@ -31,14 +31,20 @@ DocumentProcessor.API -> Application -> Domain
           |                  ^
           +-> Infrastructure-+
                  |       |
-              OpenAI  PostgreSQL
+     OpenAI provider  PostgreSQL
 ```
 
 - `Domain` owns the document lifecycle and has no EF Core, OpenAI or HTTP
   dependency.
-- `Application` owns CQRS use cases, validation, ports and extraction policy.
-- `Infrastructure` implements PostgreSQL persistence and the OpenAI adapter.
+- `Application` owns CQRS use cases, the `IDocumentAnalyzer` port, provider
+  contracts and factory, validation, and extraction policy.
+- `Infrastructure` implements PostgreSQL persistence and the OpenAI provider.
 - `API` owns upload boundaries, antiforgery, HTTP error handling and the demo UI.
+
+The provider ID is configured separately from the OpenAI model with
+`DocumentAnalysis:Provider`. The currently implemented and supported ID is
+`openai`; unknown IDs fail startup validation. `OpenAI:Model` independently
+selects `gpt-6-luna` (default) or `gpt-5.6-luna`.
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
@@ -96,6 +102,10 @@ $env:OpenAI__Model = 'gpt-5.6-luna'
 Clear the override after the run with
 `Remove-Item Env:OpenAI__Model -ErrorAction SilentlyContinue`.
 
+Provider selection is independent: set
+`$env:DocumentAnalysis__Provider = 'openai'` to select the supported provider.
+OpenAI is currently the only implemented provider.
+
 ## OpenAI model configuration and evaluation
 
 Both model profiles are configured in
@@ -152,7 +162,7 @@ retention/deletion rules, appropriate encryption and operational controls.
 
 ## Verification status
 
-The Release solution builds with zero warnings/errors and 38/38 automated tests
+The Release solution builds with zero warnings/errors and 57/57 automated tests
 pass. Node syntax checks and the local NuGet vulnerability audit passed. Docker
 PostgreSQL is healthy; migrations and 10 successful synthetic document writes
 were verified, with one failed database record from the earlier local image
@@ -168,6 +178,10 @@ been checked with both configured models, but acceptance remains limited to
 the synthetic evaluation set. See [docs/DEMO-CHECKLIST.md](docs/DEMO-CHECKLIST.md),
 [docs/HANDOFF_ES.md](docs/HANDOFF_ES.md) and the
 [evaluation report](docs/MODEL-EVALUATION-2026-10-21.md).
+
+GitHub Actions runs restore, Release build, the full test suite and a transitive
+NuGet vulnerability audit on pull requests and pushes to `main`. The workflow
+does not require OpenAI credentials, PostgreSQL or billable provider calls.
 
 ## License
 

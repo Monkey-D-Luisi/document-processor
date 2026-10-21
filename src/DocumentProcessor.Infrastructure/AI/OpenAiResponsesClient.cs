@@ -1,5 +1,6 @@
 #pragma warning disable OPENAI001
 
+using DocumentProcessor.Application.Common.DependencyInjection;
 using OpenAI.Responses;
 
 namespace DocumentProcessor.Infrastructure.AI;
@@ -20,6 +21,7 @@ internal sealed record OpenAiResponsesResult(
     int? CachedInputTokens,
     int? CacheWriteTokens);
 
+[IoC(typeof(IOpenAiResponsesClient), IoCLifetime.Singleton)]
 internal sealed class OpenAiResponsesClient(ResponsesClient client)
     : IOpenAiResponsesClient
 {

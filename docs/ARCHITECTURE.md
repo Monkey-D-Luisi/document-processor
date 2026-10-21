@@ -18,6 +18,12 @@ Application use case
     +--> IDocumentAnalyzer port
              |
              v
+        IDocumentAnalysisProviderFactory
+             |
+             v
+        IDocumentAnalysisProvider
+             |
+             v
         OpenAI Responses API
         + file/image input
         + strict JSON Schema
@@ -48,8 +54,9 @@ API ------------> Application ------------> Domain
 ```
 
 - `Domain` has no external package dependencies.
-- `Application` owns use cases, ports, validation and deterministic analysis policy.
-- `Infrastructure` implements persistence and the OpenAI adapter.
+- `Application` owns use cases, the `IDocumentAnalyzer` and provider ports,
+  provider factory, validation and deterministic analysis policy.
+- `Infrastructure` implements persistence, IoC scanning and the OpenAI provider.
 - `API` owns HTTP concerns only.
 - Raw uploaded document bytes are **not persisted**.
 - Model output is not trusted as domain state until deterministic validation is applied.
@@ -90,6 +97,17 @@ as a calibrated probability.
 
 ## Provider boundary and cost telemetry
 
+`DocumentAnalysisProviderType` is a stable typed identity whose external ID is
+`openai`. `DocumentAnalysis:Provider` selects that identity independently from
+`OpenAI:Model`. Configuration is validated at startup; only the OpenAI
+provider is implemented. The Application use case continues to depend only on
+`IDocumentAnalyzer`.
+
+When another provider is added, make OpenAI options validation and SDK client
+construction conditional on selecting `openai`. The current host validates
+OpenAI configuration at startup even when a different provider is selected;
+that should not become a requirement for other providers.
+
 The Infrastructure adapter sends PDF/image input through the Responses API and
 requests a strict JSON Schema result. Provider output is parsed as a candidate;
 it does not bypass application policy. Provider failures are mapped to stable
@@ -113,6 +131,10 @@ repository dependencies. PostgreSQL migrations, persistence and both live
 model integrations were also exercised locally with synthetic documents.
 Results are limited to the small evaluation set; see
 [`DEMO-CHECKLIST.md`](DEMO-CHECKLIST.md).
+
+The GitHub Actions workflow runs .NET 10 restore, Release build, the full test
+suite and a NuGet vulnerability audit on pull requests and pushes to `main`.
+It does not use OpenAI credentials or make provider calls.
 
 The UI uses antiforgery for browser uploads, but the demo has no user
 authentication or authorization. Keep it on a trusted local machine until

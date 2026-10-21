@@ -1,18 +1,23 @@
 using System.Diagnostics;
 using DocumentProcessor.Application.Common.Exceptions;
 using DocumentProcessor.Application.Common.Interfaces;
+using DocumentProcessor.Application.Common.DependencyInjection;
+using DocumentProcessor.Application.Common.Models;
 using System.ClientModel;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace DocumentProcessor.Infrastructure.AI;
 
+[IoC(typeof(IDocumentAnalysisProvider), IoCLifetime.Scoped, allowMultiple: true)]
 internal sealed class OpenAiDocumentAnalyzer(
     IOpenAiResponsesClient responsesClient,
     IOptions<OpenAiDocumentOptions> options,
     ILogger<OpenAiDocumentAnalyzer> logger)
-    : IDocumentAnalyzer
+    : IDocumentAnalysisProvider
 {
+    public DocumentAnalysisProviderType ProviderType => DocumentAnalysisProviderType.OpenAi;
+
     public async Task<DocumentAnalyzerResult> AnalyzeAsync(
         DocumentAnalyzerInput input,
         CancellationToken cancellationToken = default)

@@ -5,7 +5,13 @@
 La aplicación compila y se ha probado localmente con PostgreSQL y con ambos
 modelos de OpenAI. El modelo predeterminado es `gpt-6-luna`; `gpt-5.6-luna`
 sigue disponible mediante configuración. La comparación utilizó exclusivamente
-documentos sintéticos. No se ha publicado ni desplegado nada.
+documentos sintéticos. El proveedor se selecciona de forma independiente con
+`DocumentAnalysis:Provider`; actualmente solo se implementa `openai`. No se ha
+publicado ni desplegado nada.
+
+Mejora futura: al añadir otro proveedor, hacer que la validación de opciones y
+la construcción del cliente SDK de OpenAI dependan de seleccionar `openai`,
+para que los demás proveedores no requieran configuración de OpenAI.
 
 El código propio del proyecto se licencia bajo MIT, con titular `Monkey-D-Luisi`
 y año 2026. MediatR 12.5.0 mantiene su licencia Apache-2.0 independiente,
@@ -20,16 +26,19 @@ versión implica aceptar y vigilar ese riesgo.
 - `dotnet restore .\DocumentProcessor.sln`: correcto.
 - `dotnet build .\DocumentProcessor.sln --configuration Release`: correcto,
   cero warnings y errores.
-- `dotnet test .\DocumentProcessor.sln --configuration Release`: 38 pruebas
+- `dotnet test .\DocumentProcessor.sln --configuration Release`: 57 pruebas
   correctas.
+- La prueba de composición inicia el host HTTP en entorno `Testing`, consulta
+  antiforgery y resuelve `IDocumentAnalyzer` → `ConfiguredDocumentAnalyzer` →
+  factory → `OpenAiDocumentAnalyzer` con una clave ficticia, sin llamar a OpenAI.
 - `node --check .\src\DocumentProcessor.API\wwwroot\app.js`: correcto.
 - `dotnet list .\DocumentProcessor.sln package --vulnerable
   --include-transitive`: no encontró paquetes vulnerables.
-- La compilación Release terminó con 0 advertencias y 0 errores; los cuatro
-  proyectos de tests pasaron 38/38 pruebas.
 - MediatR 12.5.0 compila y pasa las pruebas en `net10.0`; su paquete declara
   compatibilidad desde .NET 6 / .NET Standard 2.0. El grafo restaurado no
   contiene MediatR 13 ni 14.
+- La nueva GitHub Action ejecuta restore, build Release, tests y auditoría
+  NuGet en PRs y pushes a `main`, sin secretos OpenAI ni llamadas al proveedor.
 - Docker PostgreSQL está saludable. La migración de Development se aplicó y
   `/health` devolvió HTTP 200. La base tiene 10 documentos `Completed` y un
   documento `Failed` de la primera subida de imagen.
