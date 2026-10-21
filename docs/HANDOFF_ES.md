@@ -7,6 +7,11 @@ modelos de OpenAI. El modelo predeterminado es `gpt-6-luna`; `gpt-5.6-luna`
 sigue disponible mediante configuración. La comparación utilizó exclusivamente
 documentos sintéticos. No se ha publicado ni desplegado nada.
 
+El código propio del proyecto se licencia bajo MIT, con titular `Monkey-D-Luisi`
+y año 2026. MediatR 14.1.0 mantiene condiciones de licencia independientes.
+La compatibilidad para publicar este repositorio completo bajo MIT sigue sin
+confirmarse y debe resolverse antes de cambiar la visibilidad.
+
 ## Verificación realizada el 21/10/2026
 
 - `dotnet restore .\DocumentProcessor.sln`: correcto.
@@ -91,7 +96,7 @@ Endpoints: `GET /api/v1/documents/antiforgery`,
 La UI gestiona antiforgery y muestra datos extraídos, líneas, coherencias,
 estado de revisión y telemetría.
 
-## Pendiente antes de mostrarlo a clientes
+## Pendiente antes de hacerlo público o mostrarlo a clientes
 
 1. Grabar una demo corta con documentos sintéticos y revisar el flujo visual
    desde el selector hasta el resultado.
@@ -100,15 +105,22 @@ estado de revisión y telemetría.
 3. Añadir autenticación, autorización, retención/borrado y controles de
    operación antes de exponer la aplicación a terceros o cargar documentos
    reales.
-4. Resolver la licencia del repositorio antes de hacerlo público: no existe un
-   archivo `LICENSE` en la raíz. La visibilidad pública permite ver y bifurcar
-   el repositorio, pero no concede por sí sola permiso general para reutilizar
-   o redistribuir el código.
-5. Revisar la compatibilidad entre la licencia elegida para el proyecto y
-   MediatR 14.1.0. Sus términos actuales ofrecen una ruta RPL-1.5 para código
-   fuente y una licencia comercial alternativa. Para servicios a clientes, la
-   elegibilidad de la licencia comunitaria depende también del cliente; no se
-   debe asumir que la licencia del consultor cubre el producto del cliente.
+4. Resolver el bloqueo de compatibilidad de licencias antes de hacerlo
+   público. La raíz ya contiene la licencia MIT para el código propio, pero
+   MediatR 14.1.0 tiene términos separados: su fuente se ofrece bajo RPL-1.5 y
+   el acuerdo comercial no concede derechos de redistribución de su código
+   fuente. La compatibilidad de publicar bajo MIT un repositorio que depende
+   de MediatR no está confirmada. Obtener una autorización escrita de Lucky
+   Penny Software o resolver la combinación de licencias antes de publicar.
+5. Si el uso es de producción, registrar al desarrollador/organización en
+   MediatR.io, verificar elegibilidad Community y obtener la clave. El acuerdo
+   Community exige ingresos anuales inferiores a USD 5 millones, no más de USD
+   10 millones de capital externo y excluye gobiernos y ciertos usos
+   operativos universitarios; los trabajos para clientes dependen de que el
+   cliente también califique. MediatR 14.1.0 recibe la clave en
+   `cfg.LicenseKey` al registrar `AddMediatR`; esta demo aún no la lee desde
+   configuración. Desarrollo, CI y staging no requieren clave. No guardarla
+   en Git.
 6. Confirmar que el nombre humano mostrado como autor del commit inicial es
    intencional antes de publicar el historial. El email del commit es una
    dirección `noreply` de GitHub.

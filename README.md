@@ -169,22 +169,36 @@ the synthetic evaluation set. See [docs/DEMO-CHECKLIST.md](docs/DEMO-CHECKLIST.m
 [docs/HANDOFF_ES.md](docs/HANDOFF_ES.md) and the
 [evaluation report](docs/MODEL-EVALUATION-2026-10-21.md).
 
-## License status
+## License
 
-There is currently no project-level `LICENSE` file. Under
-[GitHub's repository licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository),
-public visibility permits viewing and forking under its Terms of Service, while
-the default copyright rules otherwise retain the owner's rights; it does not
-grant general permission to reuse or redistribute this project. Choose and add
-a project license before describing the repository as open source.
+Project-owned source code and documentation are licensed under the MIT License;
+see [LICENSE](LICENSE) for the 2026 copyright notice. Third-party dependencies
+retain their own terms. The test projects use native xUnit assertions and do
+not depend on FluentAssertions.
 
-The application uses MediatR 14.1.0. Its package terms cover MediatR 13.0.0 and
-later and provide an RPL-1.5 source license or a separate commercial license.
-Review compatibility with the project's chosen license before publishing the
-source. Before using the application for a customer or in production, confirm
-the applicable license path with that customer and Lucky Penny Software. The
-test projects use xUnit assertions and do not depend on FluentAssertions.
-See [the public release readiness audit](docs/PUBLIC-RELEASE-READINESS.md).
+MediatR 14.1.0 has separate licensing terms and is not relicensed by this
+project's MIT license. Lucky Penny Software publishes MediatR source under
+RPL-1.5 and offers a separate contractual license path. Its current agreement
+defines distribution rights broadly and does not grant source redistribution
+rights under the commercial agreement. The compatibility of publishing this
+dependent source repository under MIT has not been established; obtain written
+confirmation from Lucky Penny Software before making the repository public.
+This is a release blocker while MediatR 14.1.0 and the MIT project license are
+both retained.
+
+The Community License is available only while the developer or organization
+meets the vendor's current eligibility rules: annual revenue below USD 5
+million, no more than USD 10 million in outside capital, and not a government
+or quasi-government agency; higher-education operational use is also excluded.
+For client work, the end client's eligibility applies. Register through the
+[MediatR pricing page](https://mediatr.io/) and follow the vendor's account
+registration to obtain the license key. Development, CI and staging do not
+require a key; production deployments do. MediatR 14.1.0 accepts the key via
+`cfg.LicenseKey` during `AddMediatR` registration. This local demo does not yet
+wire a production license key from configuration, so a production host must
+connect its secret store to that setting before deployment. Never commit the
+key. See the [vendor FAQ](https://luckypennysoftware.com/faq) and the
+[public release readiness audit](docs/PUBLIC-RELEASE-READINESS.md) for details.
 
 ## Out of scope
 
