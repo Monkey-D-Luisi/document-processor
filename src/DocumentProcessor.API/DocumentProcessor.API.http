@@ -1,0 +1,14 @@
+@host = http://localhost:5178
+
+GET {{host}}/health
+Accept: application/json
+
+###
+
+GET {{host}}/api/v1/documents/00000000-0000-0000-0000-000000000000
+Accept: application/json
+
+###
+
+# Multipart uploads are easiest from the browser demo or curl:
+# curl -X POST -F "file=@invoice.pdf" http://localhost:5178/api/v1/documents/process

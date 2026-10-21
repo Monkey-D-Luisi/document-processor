@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <EmbeddedResource Include="Documents\CurrencyMinorUnits.json"
+                      LogicalName="DocumentProcessor.Domain.Documents.CurrencyMinorUnits.json" />
+  </ItemGroup>
+</Project>

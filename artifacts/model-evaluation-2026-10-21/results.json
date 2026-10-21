@@ -1,0 +1,628 @@
+[
+  {
+    "Sample": "01_invoice_digital.pdf",
+    "InputSha256": "ff3114b4b9808e435d21abcaec3beae5580736c74fd94367aaed95e2b3b51cdf",
+    "ConfiguredModel": "gpt-5.6-luna",
+    "ReturnedModel": "gpt-5.6-luna",
+    "HttpStatus": 201,
+    "DocumentId": "d6c3298d-4679-461b-8847-9be853eb779f",
+    "DocumentStatus": "Completed",
+    "RequiresReview": false,
+    "IssueCodes": [],
+    "Analysis": {
+      "documentType": "Invoice",
+      "supplierName": "Acme Ficticio S.L.",
+      "supplierTaxId": "SYNTHETIC-NIF-001",
+      "customerName": "Cliente Demo S.L.",
+      "customerTaxId": "SYNTHETIC-NIF-002",
+      "documentNumber": "TEST-2026-001",
+      "issueDate": "2026-03-14",
+      "dueDate": null,
+      "currency": "EUR",
+      "subtotal": 100,
+      "taxTotal": 21,
+      "total": 121,
+      "lines": [
+        {
+          "description": "Consultoria",
+          "quantity": 2,
+          "unitPrice": 50,
+          "taxRate": 21,
+          "lineTotal": 100,
+          "discount": null,
+          "taxAmount": 21
+        }
+      ],
+      "issues": [],
+      "headerDiscount": null,
+      "vatBreakdown": [
+        {
+          "base": 100,
+          "rate": 21,
+          "amount": 21
+        }
+      ],
+      "surcharges": [],
+      "withholdings": [],
+      "requiresReview": false
+    },
+    "LatencyMs": 4504,
+    "InputTokens": 953,
+    "CachedInputTokens": 0,
+    "CacheWriteTokens": 0,
+    "OutputTokens": 181,
+    "EstimatedCostUsd": 0.000408
+  },
+  {
+    "Sample": "01_invoice_digital.pdf",
+    "InputSha256": "ff3114b4b9808e435d21abcaec3beae5580736c74fd94367aaed95e2b3b51cdf",
+    "ConfiguredModel": "gpt-6-luna",
+    "ReturnedModel": "gpt-6-luna",
+    "HttpStatus": 201,
+    "DocumentId": "e794729e-eb5e-47cc-8eab-3d36e0c9474f",
+    "DocumentStatus": "Completed",
+    "RequiresReview": false,
+    "IssueCodes": [],
+    "Analysis": {
+      "documentType": "Invoice",
+      "supplierName": "Acme Ficticio S.L.",
+      "supplierTaxId": "SYNTHETIC-NIF-001",
+      "customerName": "Cliente Demo S.L.",
+      "customerTaxId": "SYNTHETIC-NIF-002",
+      "documentNumber": "TEST-2026-001",
+      "issueDate": "2026-03-14",
+      "dueDate": null,
+      "currency": "EUR",
+      "subtotal": 100,
+      "taxTotal": 21,
+      "total": 121,
+      "lines": [
+        {
+          "description": "Consultoria",
+          "quantity": 2,
+          "unitPrice": 50,
+          "taxRate": 21,
+          "lineTotal": 100,
+          "discount": null,
+          "taxAmount": 21
+        }
+      ],
+      "issues": [],
+      "headerDiscount": null,
+      "vatBreakdown": [
+        {
+          "base": 100,
+          "rate": 21,
+          "amount": 21
+        }
+      ],
+      "surcharges": [],
+      "withholdings": [],
+      "requiresReview": false
+    },
+    "LatencyMs": 2502,
+    "InputTokens": 953,
+    "CachedInputTokens": 0,
+    "CacheWriteTokens": 0,
+    "OutputTokens": 181,
+    "EstimatedCostUsd": 0.000186
+  },
+  {
+    "Sample": "02_invoice_scan.png",
+    "InputSha256": "e8ca5524458348897f9b0573dc536f9034ed5ecbb929ee43607a61d43be53fa6",
+    "ConfiguredModel": "gpt-6-luna",
+    "ReturnedModel": "gpt-6-luna",
+    "HttpStatus": 201,
+    "DocumentId": "a7a6f6e4-189d-46c6-9895-3c995f42bc0d",
+    "DocumentStatus": "Completed",
+    "RequiresReview": false,
+    "IssueCodes": [],
+    "Analysis": {
+      "documentType": "Invoice",
+      "supplierName": "Luz Clara Demo S.L.",
+      "supplierTaxId": "SYNTHETIC-NIF-003",
+      "customerName": "Northwind Demo S.L.",
+      "customerTaxId": null,
+      "documentNumber": "TEST-2026-002",
+      "issueDate": "2026-04-02",
+      "dueDate": null,
+      "currency": "EUR",
+      "subtotal": 80.0,
+      "taxTotal": 8.0,
+      "total": 88.0,
+      "lines": [
+        {
+          "description": "Diseno grafico",
+          "quantity": 1,
+          "unitPrice": 80.0,
+          "taxRate": 10,
+          "lineTotal": 80.0,
+          "discount": null,
+          "taxAmount": 8.0
+        }
+      ],
+      "issues": [],
+      "headerDiscount": null,
+      "vatBreakdown": [
+        {
+          "base": 80.0,
+          "rate": 10,
+          "amount": 8.0
+        }
+      ],
+      "surcharges": [],
+      "withholdings": [],
+      "requiresReview": false
+    },
+    "LatencyMs": 3799,
+    "InputTokens": 3765,
+    "CachedInputTokens": 0,
+    "CacheWriteTokens": 3762,
+    "OutputTokens": 191,
+    "EstimatedCostUsd": 0.000566
+  },
+  {
+    "Sample": "02_invoice_scan.png",
+    "InputSha256": "e8ca5524458348897f9b0573dc536f9034ed5ecbb929ee43607a61d43be53fa6",
+    "ConfiguredModel": "gpt-5.6-luna",
+    "ReturnedModel": "gpt-5.6-luna",
+    "HttpStatus": 201,
+    "DocumentId": "4ebd8ab1-e9eb-484b-bf8d-8f8a295b1b83",
+    "DocumentStatus": "Completed",
+    "RequiresReview": false,
+    "IssueCodes": [],
+    "Analysis": {
+      "documentType": "Invoice",
+      "supplierName": "Luz Clara Demo S.L.",
+      "supplierTaxId": "SYNTHETIC-NIF-003",
+      "customerName": "Northwind Demo S.L.",
+      "customerTaxId": null,
+      "documentNumber": "TEST-2026-002",
+      "issueDate": "2026-04-02",
+      "dueDate": null,
+      "currency": "EUR",
+      "subtotal": 80.0,
+      "taxTotal": 8.0,
+      "total": 88.0,
+      "lines": [
+        {
+          "description": "Diseno grafico",
+          "quantity": 1.0,
+          "unitPrice": 80.0,
+          "taxRate": 10.0,
+          "lineTotal": 80.0,
+          "discount": null,
+          "taxAmount": 8.0
+        }
+      ],
+      "issues": [],
+      "headerDiscount": null,
+      "vatBreakdown": [
+        {
+          "base": 80.0,
+          "rate": 10.0,
+          "amount": 8.0
+        }
+      ],
+      "surcharges": [],
+      "withholdings": [],
+      "requiresReview": false
+    },
+    "LatencyMs": 3095,
+    "InputTokens": 3765,
+    "CachedInputTokens": 0,
+    "CacheWriteTokens": 3762,
+    "OutputTokens": 197,
+    "EstimatedCostUsd": 0.001178
+  },
+  {
+    "Sample": "03_invoice_multiline.pdf",
+    "InputSha256": "38ec6ceb06b5d328bd8e719bfcdfa7e14955feb4ae0f7fb00479ed24b87db12c",
+    "ConfiguredModel": "gpt-5.6-luna",
+    "ReturnedModel": "gpt-5.6-luna",
+    "HttpStatus": 201,
+    "DocumentId": "36d65115-1b8c-4899-9cd7-b89869ee57f6",
+    "DocumentStatus": "Completed",
+    "RequiresReview": false,
+    "IssueCodes": [],
+    "Analysis": {
+      "documentType": "Invoice",
+      "supplierName": "Oficina Estrella Demo S.L.",
+      "supplierTaxId": null,
+      "customerName": "Fabrikam Demo S.L.",
+      "customerTaxId": null,
+      "documentNumber": "TEST-2026-003",
+      "issueDate": "2026-05-09",
+      "dueDate": null,
+      "currency": "EUR",
+      "subtotal": 320,
+      "taxTotal": 67.2,
+      "total": 387.2,
+      "lines": [
+        {
+          "description": "Papel A4",
+          "quantity": 4,
+          "unitPrice": 5,
+          "taxRate": 21,
+          "lineTotal": 20,
+          "discount": null,
+          "taxAmount": 4.2
+        },
+        {
+          "description": "Servicio tecnico",
+          "quantity": 2,
+          "unitPrice": 150,
+          "taxRate": 21,
+          "lineTotal": 300,
+          "discount": null,
+          "taxAmount": 63
+        }
+      ],
+      "issues": [],
+      "headerDiscount": null,
+      "vatBreakdown": [
+        {
+          "base": 320,
+          "rate": 21,
+          "amount": 67.2
+        }
+      ],
+      "surcharges": [],
+      "withholdings": [],
+      "requiresReview": false
+    },
+    "LatencyMs": 3162,
+    "InputTokens": 972,
+    "CachedInputTokens": 0,
+    "CacheWriteTokens": 0,
+    "OutputTokens": 210,
+    "EstimatedCostUsd": 0.000446
+  },
+  {
+    "Sample": "03_invoice_multiline.pdf",
+    "InputSha256": "38ec6ceb06b5d328bd8e719bfcdfa7e14955feb4ae0f7fb00479ed24b87db12c",
+    "ConfiguredModel": "gpt-6-luna",
+    "ReturnedModel": "gpt-6-luna",
+    "HttpStatus": 201,
+    "DocumentId": "d3eae74c-8673-40f0-9c5a-9f95ad505e9b",
+    "DocumentStatus": "Completed",
+    "RequiresReview": false,
+    "IssueCodes": [],
+    "Analysis": {
+      "documentType": "Invoice",
+      "supplierName": "Oficina Estrella Demo S.L.",
+      "supplierTaxId": null,
+      "customerName": "Fabrikam Demo S.L.",
+      "customerTaxId": null,
+      "documentNumber": "TEST-2026-003",
+      "issueDate": "2026-05-09",
+      "dueDate": null,
+      "currency": "EUR",
+      "subtotal": 320.0,
+      "taxTotal": 67.2,
+      "total": 387.2,
+      "lines": [
+        {
+          "description": "Papel A4",
+          "quantity": 4,
+          "unitPrice": 5.0,
+          "taxRate": 21,
+          "lineTotal": 20.0,
+          "discount": null,
+          "taxAmount": 4.2
+        },
+        {
+          "description": "Servicio tecnico",
+          "quantity": 2,
+          "unitPrice": 150.0,
+          "taxRate": 21,
+          "lineTotal": 300.0,
+          "discount": null,
+          "taxAmount": 63.0
+        }
+      ],
+      "issues": [],
+      "headerDiscount": null,
+      "vatBreakdown": [
+        {
+          "base": 320.0,
+          "rate": 21,
+          "amount": 67.2
+        }
+      ],
+      "surcharges": [],
+      "withholdings": [],
+      "requiresReview": false
+    },
+    "LatencyMs": 3602,
+    "InputTokens": 972,
+    "CachedInputTokens": 0,
+    "CacheWriteTokens": 0,
+    "OutputTokens": 224,
+    "EstimatedCostUsd": 0.000209
+  },
+  {
+    "Sample": "04_invoice_inconsistent.jpg",
+    "InputSha256": "48144bef5fa7904a4d5e34199729c4344b93af1903bef544f2fe4d89b9241fee",
+    "ConfiguredModel": "gpt-6-luna",
+    "ReturnedModel": "gpt-6-luna",
+    "HttpStatus": 201,
+    "DocumentId": "438e8c67-db4e-4bb4-a5df-533d19df2f58",
+    "DocumentStatus": "Completed",
+    "RequiresReview": true,
+    "IssueCodes": [
+      "model_warning",
+      "total_mismatch"
+    ],
+    "Analysis": {
+      "documentType": "Invoice",
+      "supplierName": "Reparaciones Ficticias S.L.",
+      "supplierTaxId": null,
+      "customerName": "Cliente Demo S.L.",
+      "customerTaxId": null,
+      "documentNumber": "TEST-2026-004",
+      "issueDate": "2026-06-16",
+      "dueDate": null,
+      "currency": "EUR",
+      "subtotal": 50.0,
+      "taxTotal": 10.5,
+      "total": 64.5,
+      "lines": [
+        {
+          "description": "Reparacion de equipo",
+          "quantity": 1,
+          "unitPrice": 50.0,
+          "taxRate": 21,
+          "lineTotal": 50.0,
+          "discount": null,
+          "taxAmount": 10.5
+        }
+      ],
+      "issues": [
+        {
+          "code": "model_warning",
+          "message": "The displayed total payable of 64.50 EUR does not match the stated base of 50.00 EUR plus VAT of 10.50 EUR.",
+          "severity": "Warning",
+          "field": null,
+          "lineIndex": null
+        },
+        {
+          "code": "total_mismatch",
+          "message": "Subtotal + VAT + surcharges − withholdings do not match total (60.5 vs 64.5).",
+          "severity": "Warning",
+          "field": "total",
+          "lineIndex": null
+        }
+      ],
+      "headerDiscount": null,
+      "vatBreakdown": [
+        {
+          "base": 50.0,
+          "rate": 21,
+          "amount": 10.5
+        }
+      ],
+      "surcharges": [],
+      "withholdings": [],
+      "requiresReview": true
+    },
+    "LatencyMs": 5099,
+    "InputTokens": 3765,
+    "CachedInputTokens": 0,
+    "CacheWriteTokens": 3762,
+    "OutputTokens": 307,
+    "EstimatedCostUsd": 0.000624
+  },
+  {
+    "Sample": "04_invoice_inconsistent.jpg",
+    "InputSha256": "48144bef5fa7904a4d5e34199729c4344b93af1903bef544f2fe4d89b9241fee",
+    "ConfiguredModel": "gpt-5.6-luna",
+    "ReturnedModel": "gpt-5.6-luna",
+    "HttpStatus": 201,
+    "DocumentId": "25f29190-5d18-4424-8628-82b48a00f488",
+    "DocumentStatus": "Completed",
+    "RequiresReview": true,
+    "IssueCodes": [
+      "total_mismatch"
+    ],
+    "Analysis": {
+      "documentType": "Invoice",
+      "supplierName": "Reparaciones Ficticias S.L.",
+      "supplierTaxId": null,
+      "customerName": "Cliente Demo S.L.",
+      "customerTaxId": null,
+      "documentNumber": "TEST-2026-004",
+      "issueDate": "2026-06-16",
+      "dueDate": null,
+      "currency": "EUR",
+      "subtotal": 50.0,
+      "taxTotal": 10.5,
+      "total": 64.5,
+      "lines": [
+        {
+          "description": "Reparacion de equipo",
+          "quantity": 1,
+          "unitPrice": 50.0,
+          "taxRate": 21.0,
+          "lineTotal": 50.0,
+          "discount": null,
+          "taxAmount": 10.5
+        }
+      ],
+      "issues": [
+        {
+          "code": "total_mismatch",
+          "message": "Subtotal + VAT + surcharges − withholdings do not match total (60.5 vs 64.5).",
+          "severity": "Warning",
+          "field": "total",
+          "lineIndex": null
+        }
+      ],
+      "headerDiscount": null,
+      "vatBreakdown": [
+        {
+          "base": 50.0,
+          "rate": 21.0,
+          "amount": 10.5
+        }
+      ],
+      "surcharges": [],
+      "withholdings": [],
+      "requiresReview": true
+    },
+    "LatencyMs": 2927,
+    "InputTokens": 3765,
+    "CachedInputTokens": 0,
+    "CacheWriteTokens": 3762,
+    "OutputTokens": 189,
+    "EstimatedCostUsd": 0.001168
+  },
+  {
+    "Sample": "05_purchase_order_unknown.pdf",
+    "InputSha256": "beaf8c812a03094d88b4287c4f1837f7117d0078e561eeb813753a3c969fe260",
+    "ConfiguredModel": "gpt-5.6-luna",
+    "ReturnedModel": "gpt-5.6-luna",
+    "HttpStatus": 201,
+    "DocumentId": "b23c91a9-2f01-4ddd-a1c5-0a33e21c76cf",
+    "DocumentStatus": "Completed",
+    "RequiresReview": true,
+    "IssueCodes": [
+      "model_warning",
+      "model_warning",
+      "unknown_document_type"
+    ],
+    "Analysis": {
+      "documentType": "Unknown",
+      "supplierName": "Suministros Demo S.L.",
+      "supplierTaxId": null,
+      "customerName": "Empresa Demo S.L.",
+      "customerTaxId": null,
+      "documentNumber": "TEST-PO-005",
+      "issueDate": "2026-06-20",
+      "dueDate": null,
+      "currency": "EUR",
+      "subtotal": null,
+      "taxTotal": null,
+      "total": null,
+      "lines": [
+        {
+          "description": "Archivadores",
+          "quantity": 10,
+          "unitPrice": 4,
+          "taxRate": null,
+          "lineTotal": null,
+          "discount": null,
+          "taxAmount": null
+        }
+      ],
+      "issues": [
+        {
+          "code": "model_warning",
+          "message": "El documento se identifica como una orden de compra y declara expresamente que no es una factura.",
+          "severity": "Warning",
+          "field": null,
+          "lineIndex": null
+        },
+        {
+          "code": "model_warning",
+          "message": "No contiene base imponible, impuestos ni total a pagar.",
+          "severity": "Warning",
+          "field": null,
+          "lineIndex": null
+        },
+        {
+          "code": "unknown_document_type",
+          "message": "The document could not be classified as invoice, delivery note, or quote.",
+          "severity": "Warning",
+          "field": "documentType",
+          "lineIndex": null
+        }
+      ],
+      "headerDiscount": null,
+      "vatBreakdown": [],
+      "surcharges": [],
+      "withholdings": [],
+      "requiresReview": true
+    },
+    "LatencyMs": 2471,
+    "InputTokens": 912,
+    "CachedInputTokens": 0,
+    "CacheWriteTokens": 0,
+    "OutputTokens": 182,
+    "EstimatedCostUsd": 0.000401
+  },
+  {
+    "Sample": "05_purchase_order_unknown.pdf",
+    "InputSha256": "beaf8c812a03094d88b4287c4f1837f7117d0078e561eeb813753a3c969fe260",
+    "ConfiguredModel": "gpt-6-luna",
+    "ReturnedModel": "gpt-6-luna",
+    "HttpStatus": 201,
+    "DocumentId": "90f782c3-e9bc-40da-99ab-73b7ba0d35fe",
+    "DocumentStatus": "Completed",
+    "RequiresReview": true,
+    "IssueCodes": [
+      "model_warning",
+      "model_warning",
+      "unknown_document_type"
+    ],
+    "Analysis": {
+      "documentType": "Unknown",
+      "supplierName": "Suministros Demo S.L.",
+      "supplierTaxId": null,
+      "customerName": "Empresa Demo S.L.",
+      "customerTaxId": null,
+      "documentNumber": "TEST-PO-005",
+      "issueDate": "2026-06-20",
+      "dueDate": null,
+      "currency": "EUR",
+      "subtotal": null,
+      "taxTotal": null,
+      "total": null,
+      "lines": [
+        {
+          "description": "Archivadores",
+          "quantity": 10,
+          "unitPrice": 4,
+          "taxRate": null,
+          "lineTotal": null,
+          "discount": null,
+          "taxAmount": null
+        }
+      ],
+      "issues": [
+        {
+          "code": "model_warning",
+          "message": "Document is labeled as a purchase order, not one of the supported document types.",
+          "severity": "Warning",
+          "field": null,
+          "lineIndex": null
+        },
+        {
+          "code": "model_warning",
+          "message": "Document states it is not an invoice and contains no taxable base, taxes, or amount due.",
+          "severity": "Warning",
+          "field": null,
+          "lineIndex": null
+        },
+        {
+          "code": "unknown_document_type",
+          "message": "The document could not be classified as invoice, delivery note, or quote.",
+          "severity": "Warning",
+          "field": "documentType",
+          "lineIndex": null
+        }
+      ],
+      "headerDiscount": null,
+      "vatBreakdown": [],
+      "surcharges": [],
+      "withholdings": [],
+      "requiresReview": true
+    },
+    "LatencyMs": 3419,
+    "InputTokens": 912,
+    "CachedInputTokens": 0,
+    "CacheWriteTokens": 0,
+    "OutputTokens": 186,
+    "EstimatedCostUsd": 0.000184
+  }
+]

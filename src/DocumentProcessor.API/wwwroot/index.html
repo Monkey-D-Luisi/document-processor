@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document Processor Demo</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">CASE STUDY 02</p>
+      <h1>Business Document Processor</h1>
+      <p class="intro">
+        Upload a PDF or document image. The backend sends it to OpenAI,
+        receives strict structured output, validates deterministic business rules,
+        and flags anything that needs human review.
+      </p>
+    </header>
+
+    <section class="panel">
+      <form id="upload-form">
+        <label class="drop-zone" for="file">
+          <strong>Select a PDF or image</strong>
+          <span>PDF, JPEG, PNG or WebP · max 20 MB</span>
+          <input id="file" name="file" type="file"
+                 accept=".pdf,.jpg,.jpeg,.png,.webp,application/pdf,image/jpeg,image/png,image/webp"
+                 required>
+        </label>
+        <button id="submit" type="submit">Process document</button>
+      </form>
+      <p id="status" class="status" aria-live="polite"></p>
+    </section>
+
+    <section id="result" class="result hidden">
+      <div class="result-header">
+        <div>
+          <p class="eyebrow">EXTRACTED RESULT</p>
+          <h2 id="document-type"></h2>
+        </div>
+        <span id="review-badge" class="badge"></span>
+      </div>
+
+      <div id="summary" class="grid"></div>
+
+      <div class="panel nested">
+        <h3>Line items</h3>
+        <div id="line-items" class="table-wrap"></div>
+      </div>
+
+      <div class="panel nested">
+        <h3>Tax and adjustments</h3>
+        <div id="financial-breakdown" class="grid"></div>
+      </div>
+
+      <div class="panel nested">
+        <h3>Validation</h3>
+        <ul id="issues"></ul>
+        <p class="note">Arithmetic checks do not confirm that extracted values match the source document or that the document is legally compliant. Verify the original before using these figures.</p>
+      </div>
+
+      <div class="panel nested">
+        <h3>Processing telemetry</h3>
+        <div id="telemetry" class="grid compact"></div>
+      </div>
+
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

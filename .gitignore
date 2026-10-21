@@ -1,0 +1,39 @@
+# Build output
+**/bin/
+**/obj/
+.vs/
+.idea/
+.vscode/
+
+# IDE state
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+**/appsettings.*.json
+**/launchSettings.*.json
+**/secrets.json
+**/secrets/
+*api_key*
+*apikey*
+*credential*
+*password*
+*.key
+*.pem
+*.pfx
+*.p12
+
+# Local data and generated output
+*.db
+*.db-shm
+*.db-wal
+*.log
+TestResults/
+coverage/
+tmp/
+.playwright-mcp/

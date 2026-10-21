@@ -1,0 +1,95 @@
+{
+  "01_invoice_digital.pdf": {
+    "documentType": "Invoice",
+    "supplierName": "Acme Ficticio S.L.",
+    "supplierTaxId": "SYNTHETIC-NIF-001",
+    "customerName": "Cliente Demo S.L.",
+    "customerTaxId": "SYNTHETIC-NIF-002",
+    "documentNumber": "TEST-2026-001",
+    "issueDate": "2026-03-14",
+    "dueDate": null,
+    "currency": "EUR",
+    "subtotal": 100.00,
+    "taxTotal": 21.00,
+    "total": 121.00,
+    "requiresReview": false,
+    "lineItems": [
+      { "description": "Consultoria", "quantity": 2, "unitPrice": 50.00, "lineTotal": 100.00, "taxRate": 21, "taxAmount": 21.00 }
+    ]
+  },
+  "02_invoice_scan.png": {
+    "documentType": "Invoice",
+    "supplierName": "Luz Clara Demo S.L.",
+    "supplierTaxId": "SYNTHETIC-NIF-003",
+    "customerName": "Northwind Demo S.L.",
+    "customerTaxId": null,
+    "documentNumber": "TEST-2026-002",
+    "issueDate": "2026-04-02",
+    "dueDate": null,
+    "currency": "EUR",
+    "subtotal": 80.00,
+    "taxTotal": 8.00,
+    "total": 88.00,
+    "requiresReview": false,
+    "lineItems": [
+      { "description": "Diseno grafico", "quantity": 1, "unitPrice": 80.00, "lineTotal": 80.00, "taxRate": 10, "taxAmount": 8.00 }
+    ]
+  },
+  "03_invoice_multiline.pdf": {
+    "documentType": "Invoice",
+    "supplierName": "Oficina Estrella Demo S.L.",
+    "supplierTaxId": null,
+    "customerName": "Fabrikam Demo S.L.",
+    "customerTaxId": null,
+    "documentNumber": "TEST-2026-003",
+    "issueDate": "2026-05-09",
+    "dueDate": null,
+    "currency": "EUR",
+    "subtotal": 320.00,
+    "taxTotal": 67.20,
+    "total": 387.20,
+    "requiresReview": false,
+    "lineItems": [
+      { "description": "Papel A4", "quantity": 4, "unitPrice": 5.00, "lineTotal": 20.00, "taxRate": 21, "taxAmount": 4.20 },
+      { "description": "Servicio tecnico", "quantity": 2, "unitPrice": 150.00, "lineTotal": 300.00, "taxRate": 21, "taxAmount": 63.00 }
+    ]
+  },
+  "04_invoice_inconsistent.jpg": {
+    "documentType": "Invoice",
+    "supplierName": "Reparaciones Ficticias S.L.",
+    "supplierTaxId": null,
+    "customerName": "Cliente Demo S.L.",
+    "customerTaxId": null,
+    "documentNumber": "TEST-2026-004",
+    "issueDate": "2026-06-16",
+    "dueDate": null,
+    "currency": "EUR",
+    "subtotal": 50.00,
+    "taxTotal": 10.50,
+    "total": 64.50,
+    "requiresReview": true,
+    "requiredIssueCodes": ["total_mismatch"],
+    "lineItems": [
+      { "description": "Reparacion de equipo", "quantity": 1, "unitPrice": 50.00, "lineTotal": 50.00, "taxRate": 21, "taxAmount": 10.50 }
+    ]
+  },
+  "05_purchase_order_unknown.pdf": {
+    "documentType": "Unknown",
+    "supplierName": "Suministros Demo S.L.",
+    "supplierTaxId": null,
+    "customerName": "Empresa Demo S.L.",
+    "customerTaxId": null,
+    "documentNumber": "TEST-PO-005",
+    "issueDate": "2026-06-20",
+    "dueDate": null,
+    "currency": "EUR",
+    "subtotal": null,
+    "taxTotal": null,
+    "total": null,
+    "requiresReview": true,
+    "requiredIssueCodes": ["unknown_document_type"],
+    "lineItems": [
+      { "description": "Archivadores", "quantity": 10, "unitPrice": 4.00, "lineTotal": null, "taxRate": null, "taxAmount": null }
+    ]
+  }
+}
