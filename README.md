@@ -169,6 +169,25 @@ the synthetic evaluation set. See [docs/DEMO-CHECKLIST.md](docs/DEMO-CHECKLIST.m
 [docs/HANDOFF_ES.md](docs/HANDOFF_ES.md) and the
 [evaluation report](docs/MODEL-EVALUATION-2026-10-21.md).
 
+## License
+
+Project-owned source code and documentation are licensed under the MIT License;
+see [LICENSE](LICENSE) for the 2026 copyright notice. Third-party dependencies
+retain their own terms. The test projects use native xUnit assertions and do
+not depend on FluentAssertions.
+
+The application pins MediatR 12.5.0, whose package metadata declares
+[Apache-2.0](https://packages.nuget.org/packages/MediatR/12.5.0). The root MIT
+license applies to project-owned work and does not relicense MediatR. The
+upstream maintainer states that MediatR 12 and earlier receive no support
+guarantees, bug fixes or security fixes; this is a maintenance risk to accept
+and monitor, not a license requirement. MediatR 12.5.0 targets .NET 6 and .NET
+Standard 2.0 and is compatible with this .NET 10 application. The restored
+dependency graph contains MediatR 12.5.0 and MediatR.Contracts 2.0.1 only; no
+MediatR 13/14 package is present. See the
+[maintainer's support statement](https://github.com/LuckyPennySoftware/MediatR/discussions/1123)
+and the [public release readiness audit](docs/PUBLIC-RELEASE-READINESS.md).
+
 ## Out of scope
 
 Email ingestion, n8n, ERP integrations, workflow builders and unrelated

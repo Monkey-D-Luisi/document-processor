@@ -1,5 +1,4 @@
 using DocumentProcessor.Infrastructure.AI;
-using FluentAssertions;
 using OpenAI.Responses;
 
 namespace DocumentProcessor.Infrastructure.Tests.AI;
@@ -19,7 +18,7 @@ public sealed class DocumentAnalysisPromptFactoryTests
 
         var message = options.InputItems.OfType<MessageResponseItem>().Single();
 
-        message.Content.Should().HaveCount(2);
-        message.Content[1].InputImageUri.Should().StartWith($"data:{mediaType};base64,");
+        Assert.Equal(2, message.Content.Count);
+        Assert.StartsWith($"data:{mediaType};base64,", message.Content[1].InputImageUri);
     }
 }

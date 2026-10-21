@@ -7,6 +7,14 @@ modelos de OpenAI. El modelo predeterminado es `gpt-6-luna`; `gpt-5.6-luna`
 sigue disponible mediante configuración. La comparación utilizó exclusivamente
 documentos sintéticos. No se ha publicado ni desplegado nada.
 
+El código propio del proyecto se licencia bajo MIT, con titular `Monkey-D-Luisi`
+y año 2026. MediatR 12.5.0 mantiene su licencia Apache-2.0 independiente,
+declarada en los metadatos oficiales de NuGet; la licencia MIT del proyecto no
+la sustituye. Esta combinación no presenta un bloqueo de licencia identificado
+para publicar el código del proyecto. MediatR 12 y anteriores no reciben
+garantías de soporte ni correcciones del mantenedor, por lo que mantener esta
+versión implica aceptar y vigilar ese riesgo.
+
 ## Verificación realizada el 21/10/2026
 
 - `dotnet restore .\DocumentProcessor.sln`: correcto.
@@ -17,6 +25,11 @@ documentos sintéticos. No se ha publicado ni desplegado nada.
 - `node --check .\src\DocumentProcessor.API\wwwroot\app.js`: correcto.
 - `dotnet list .\DocumentProcessor.sln package --vulnerable
   --include-transitive`: no encontró paquetes vulnerables.
+- La compilación Release terminó con 0 advertencias y 0 errores; los cuatro
+  proyectos de tests pasaron 38/38 pruebas.
+- MediatR 12.5.0 compila y pasa las pruebas en `net10.0`; su paquete declara
+  compatibilidad desde .NET 6 / .NET Standard 2.0. El grafo restaurado no
+  contiene MediatR 13 ni 14.
 - Docker PostgreSQL está saludable. La migración de Development se aplicó y
   `/health` devolvió HTTP 200. La base tiene 10 documentos `Completed` y un
   documento `Failed` de la primera subida de imagen.
@@ -91,7 +104,7 @@ Endpoints: `GET /api/v1/documents/antiforgery`,
 La UI gestiona antiforgery y muestra datos extraídos, líneas, coherencias,
 estado de revisión y telemetría.
 
-## Pendiente antes de mostrarlo a clientes
+## Pendiente antes de hacerlo público o mostrarlo a clientes
 
 1. Grabar una demo corta con documentos sintéticos y revisar el flujo visual
    desde el selector hasta el resultado.
@@ -100,9 +113,18 @@ estado de revisión y telemetría.
 3. Añadir autenticación, autorización, retención/borrado y controles de
    operación antes de exponer la aplicación a terceros o cargar documentos
    reales.
-4. Revisar el requisito de licencia de MediatR para cualquier uso en
-   producción; el arranque local informa que la licencia de desarrollo no
-   cubre producción.
+4. Aceptar explícitamente el riesgo de mantener MediatR 12.5.0 sin soporte ni
+   correcciones del fabricante y vigilar avisos de seguridad. Si ese riesgo
+   deja de ser aceptable, valorar una alternativa mantenida antes de actualizar
+   a MediatR 13 o posterior, cuya licencia debe revisarse por separado.
+5. Confirmar que el nombre humano mostrado como autor del commit inicial es
+   intencional antes de publicar el historial. El email del commit es una
+   dirección `noreply` de GitHub.
+
+La auditoría de preparación pública y su checklist están en
+[`PUBLIC-RELEASE-READINESS.md`](PUBLIC-RELEASE-READINESS.md). La comprobación
+de seguridad gestionada quedó pendiente porque el entorno de escaneo no pudo
+iniciar un worker de solo lectura sin un perfil de permisos administrado.
 
 Antiforgery protege el formulario del navegador frente a CSRF, pero no
 autentica usuarios. La API y su endpoint de lectura deben permanecer locales

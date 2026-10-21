@@ -3,7 +3,6 @@ using DocumentProcessor.Application.Common.Exceptions;
 using DocumentProcessor.Application.Documents.Commands.ProcessDocument;
 using DocumentProcessor.Domain.Documents;
 using DocumentProcessor.Domain.Repositories;
-using FluentAssertions;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 
@@ -45,9 +44,9 @@ public sealed class ProcessDocumentCommandHandlerTests
                 "%PDF-1.7 test"u8.ToArray()),
             CancellationToken.None);
 
-        result.IsSuccess.Should().BeTrue();
-        result.Value!.Status.Should().Be(DocumentStatus.Completed);
-        result.Value.Analysis!.RequiresReview.Should().BeFalse();
+        Assert.True(result.IsSuccess);
+        Assert.Equal(DocumentStatus.Completed, result.Value!.Status);
+        Assert.False(result.Value.Analysis!.RequiresReview);
 
         await repository.Received(1)
             .AddAsync(Arg.Any<Document>(), Arg.Any<CancellationToken>());
@@ -86,12 +85,12 @@ public sealed class ProcessDocumentCommandHandlerTests
 
         var result = await handler.Handle(CreateCommand(), CancellationToken.None);
 
-        result.IsFailure.Should().BeTrue();
-        result.Error!.Code.Should().Be("document.analysis_rate_limited");
-        result.Error.ResourceId.Should().Be(updatedDocument!.Id);
-        updatedDocument.Status.Should().Be(DocumentStatus.Failed);
-        updatedDocument.ProcessingMetadata!.CachedInputTokens.Should().Be(10);
-        updatedDocument.ProcessingMetadata.LatencyMs.Should().Be(321);
+        Assert.True(result.IsFailure);
+        Assert.Equal("document.analysis_rate_limited", result.Error!.Code);
+        Assert.Equal(updatedDocument!.Id, result.Error.ResourceId);
+        Assert.Equal(DocumentStatus.Failed, updatedDocument.Status);
+        Assert.Equal(10, updatedDocument.ProcessingMetadata!.CachedInputTokens);
+        Assert.Equal(321, updatedDocument.ProcessingMetadata.LatencyMs);
         await repository.Received(2).SaveChangesAsync(Arg.Any<CancellationToken>());
     }
 
@@ -120,8 +119,8 @@ public sealed class ProcessDocumentCommandHandlerTests
 
         var act = () => handler.Handle(CreateCommand(), cancellation.Token);
 
-        await act.Should().ThrowAsync<OperationCanceledException>();
-        updatedDocument!.Status.Should().Be(DocumentStatus.Failed);
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(act);
+        Assert.Equal(DocumentStatus.Failed, updatedDocument!.Status);
         await repository.Received(2).SaveChangesAsync(Arg.Any<CancellationToken>());
     }
 
@@ -156,10 +155,10 @@ public sealed class ProcessDocumentCommandHandlerTests
 
         var act = () => handler.Handle(CreateCommand(), cancellation.Token);
 
-        await act.Should().ThrowAsync<OperationCanceledException>();
-        updatedDocument!.Status.Should().Be(DocumentStatus.Failed);
-        updatedDocument.Analysis.Should().BeNull();
-        updatedDocument.ProcessingMetadata!.Model.Should().Be("gpt-5.6-luna");
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(act);
+        Assert.Equal(DocumentStatus.Failed, updatedDocument!.Status);
+        Assert.Null(updatedDocument.Analysis);
+        Assert.Equal("gpt-5.6-luna", updatedDocument.ProcessingMetadata!.Model);
         await repository.Received(2).SaveChangesAsync(Arg.Any<CancellationToken>());
     }
 

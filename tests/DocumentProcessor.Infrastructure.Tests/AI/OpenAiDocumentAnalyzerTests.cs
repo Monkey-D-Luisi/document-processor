@@ -1,6 +1,5 @@
 using DocumentProcessor.Application.Common.Exceptions;
 using DocumentProcessor.Infrastructure.AI;
-using FluentAssertions;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 
@@ -43,10 +42,10 @@ public sealed class OpenAiDocumentAnalyzerTests
                 "application/pdf",
                 "%PDF-1.7"u8.ToArray()));
 
-        result.Metrics.Model.Should().Be(model);
-        result.Metrics.CachedInputTokens.Should().Be(10_000);
-        result.Metrics.CacheWriteTokens.Should().Be(20_000);
-        result.Metrics.EstimatedCostUsd.Should().Be(expectedCost);
+        Assert.Equal(model, result.Metrics.Model);
+        Assert.Equal(10_000, result.Metrics.CachedInputTokens);
+        Assert.Equal(20_000, result.Metrics.CacheWriteTokens);
+        Assert.Equal(expectedCost, result.Metrics.EstimatedCostUsd);
     }
 
     [Fact]
@@ -67,8 +66,8 @@ public sealed class OpenAiDocumentAnalyzerTests
                 "application/pdf",
                 "%PDF-1.7"u8.ToArray()));
 
-        result.Metrics.Model.Should().Be("gpt-6-luna");
-        result.Metrics.EstimatedCostUsd.Should().Be(0.0146m);
+        Assert.Equal("gpt-6-luna", result.Metrics.Model);
+        Assert.Equal(0.0146m, result.Metrics.EstimatedCostUsd);
     }
 
     [Fact]
@@ -89,7 +88,7 @@ public sealed class OpenAiDocumentAnalyzerTests
                 "application/pdf",
                 "%PDF-1.7"u8.ToArray()));
 
-        result.Metrics.EstimatedCostUsd.Should().Be(0.0667m);
+        Assert.Equal(0.0667m, result.Metrics.EstimatedCostUsd);
     }
 
     [Fact]
@@ -110,11 +109,11 @@ public sealed class OpenAiDocumentAnalyzerTests
                 "application/pdf",
                 "%PDF-1.7"u8.ToArray()));
 
-        var exception = await act.Should().ThrowAsync<DocumentAnalysisException>();
-        exception.Which.FailureKind.Should().Be(DocumentAnalysisFailureKind.Incomplete);
-        exception.Which.Metrics.Should().NotBeNull();
-        exception.Which.Metrics!.InputTokens.Should().Be(120);
-        exception.Which.Metrics.CacheWriteTokens.Should().Be(0);
+        var exception = await Assert.ThrowsAnyAsync<DocumentAnalysisException>(act);
+        Assert.Equal(DocumentAnalysisFailureKind.Incomplete, exception.FailureKind);
+        Assert.NotNull(exception.Metrics);
+        Assert.Equal(120, exception.Metrics!.InputTokens);
+        Assert.Equal(0, exception.Metrics.CacheWriteTokens);
     }
 
     private static OpenAiDocumentAnalyzer CreateAnalyzer(FakeResponsesClient client, string model) =>
