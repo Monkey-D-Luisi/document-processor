@@ -6,8 +6,12 @@ La aplicación compila y se ha probado localmente con PostgreSQL y con ambos
 modelos de OpenAI. El modelo predeterminado es `gpt-6-luna`; `gpt-5.6-luna`
 sigue disponible mediante configuración. La comparación utilizó exclusivamente
 documentos sintéticos. El proveedor se selecciona de forma independiente con
-`DocumentAnalysis:Provider`; actualmente solo se implementa `openai`. No se ha
-publicado ni desplegado nada.
+`DocumentAnalysis:Provider`; actualmente solo se implementa `openai`. La
+entrega publica el código fuente, pero no despliega la aplicación.
+
+El repositorio de GitHub es público. Están activados Dependabot alerts,
+Dependabot security updates, secret scanning y push protection. La autoría
+humana de los commits de merge fue revisada y autorizada para mostrarse.
 
 Mejora futura: al añadir otro proveedor, hacer que la validación de opciones y
 la construcción del cliente SDK de OpenAI dependan de seleccionar `openai`,
@@ -113,7 +117,7 @@ Endpoints: `GET /api/v1/documents/antiforgery`,
 La UI gestiona antiforgery y muestra datos extraídos, líneas, coherencias,
 estado de revisión y telemetría.
 
-## Pendiente antes de hacerlo público o mostrarlo a clientes
+## Pendiente antes de mostrarlo a clientes
 
 1. Grabar una demo corta con documentos sintéticos y revisar el flujo visual
    desde el selector hasta el resultado.
@@ -126,10 +130,6 @@ estado de revisión y telemetría.
    correcciones del fabricante y vigilar avisos de seguridad. Si ese riesgo
    deja de ser aceptable, valorar una alternativa mantenida antes de actualizar
    a MediatR 13 o posterior, cuya licencia debe revisarse por separado.
-5. Confirmar que el nombre humano mostrado como autor del commit inicial es
-   intencional antes de publicar el historial. El email del commit es una
-   dirección `noreply` de GitHub.
-
 La auditoría de preparación pública y su checklist están en
 [`PUBLIC-RELEASE-READINESS.md`](PUBLIC-RELEASE-READINESS.md). La comprobación
 de seguridad gestionada quedó pendiente porque el entorno de escaneo no pudo
