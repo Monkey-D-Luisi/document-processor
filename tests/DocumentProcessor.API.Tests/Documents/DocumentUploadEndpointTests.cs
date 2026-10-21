@@ -6,7 +6,6 @@ using System.Text.Json;
 using DocumentProcessor.Application.Common.Interfaces;
 using DocumentProcessor.Domain.Documents;
 using DocumentProcessor.Domain.Repositories;
-using FluentAssertions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
@@ -41,7 +40,7 @@ public sealed class DocumentUploadEndpointTests : IClassFixture<DocumentUploadEn
 
         var response = await client.PostAsync("/api/v1/documents/process", content);
 
-        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
     }
 
     [Theory]
@@ -66,15 +65,15 @@ public sealed class DocumentUploadEndpointTests : IClassFixture<DocumentUploadEn
         var response = await client.SendAsync(request);
         var result = await response.Content.ReadFromJsonAsync<JsonElement>();
 
-        response.StatusCode.Should().Be(HttpStatusCode.Created);
-        result.GetProperty("mediaType").GetString().Should().Be(mediaType);
-        result.GetProperty("status").GetString().Should().Be("Completed");
-        result.GetProperty("analysis").GetProperty("requiresReview").GetBoolean().Should().BeFalse();
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        Assert.Equal(mediaType, result.GetProperty("mediaType").GetString());
+        Assert.Equal("Completed", result.GetProperty("status").GetString());
+        Assert.False(result.GetProperty("analysis").GetProperty("requiresReview").GetBoolean());
 
         var documentId = result.GetProperty("id").GetGuid();
         var stored = await client.GetFromJsonAsync<JsonElement>($"/api/v1/documents/{documentId}");
-        stored.GetProperty("id").GetGuid().Should().Be(documentId);
-        stored.GetProperty("status").GetString().Should().Be("Completed");
+        Assert.Equal(documentId, stored.GetProperty("id").GetGuid());
+        Assert.Equal("Completed", stored.GetProperty("status").GetString());
     }
 
     [Fact]
@@ -97,7 +96,7 @@ public sealed class DocumentUploadEndpointTests : IClassFixture<DocumentUploadEn
 
         var response = await client.SendAsync(request);
 
-        response.StatusCode.Should().Be(HttpStatusCode.RequestEntityTooLarge);
+        Assert.Equal(HttpStatusCode.RequestEntityTooLarge, response.StatusCode);
     }
 
     private static async Task<string> GetAntiforgeryTokenAsync(HttpClient client)

@@ -1,5 +1,4 @@
 using DocumentProcessor.Infrastructure.AI;
-using FluentAssertions;
 
 namespace DocumentProcessor.Infrastructure.Tests.AI;
 
@@ -44,11 +43,11 @@ public sealed class DocumentAnalysisResponseParserTests
     {
         var result = DocumentAnalysisResponseParser.Parse(ValidInvoiceJson);
 
-        result.DocumentType.Should().Be("invoice");
-        result.Total.Should().Be(121m);
-        result.Lines.Should().ContainSingle();
-        result.Lines[0]!.TaxAmount.Should().Be(21m);
-        result.VatBreakdown.Should().ContainSingle();
+        Assert.Equal("invoice", result.DocumentType);
+        Assert.Equal(121m, result.Total);
+        Assert.Single(result.Lines);
+        Assert.Equal(21m, result.Lines[0]!.TaxAmount);
+        Assert.Single(result.VatBreakdown);
     }
 
     [Fact]
@@ -60,7 +59,7 @@ public sealed class DocumentAnalysisResponseParserTests
 
         var act = () => DocumentAnalysisResponseParser.Parse(json);
 
-        act.Should().Throw<DocumentProcessor.Application.Common.Exceptions.DocumentAnalysisException>();
+        Assert.ThrowsAny<DocumentProcessor.Application.Common.Exceptions.DocumentAnalysisException>(act);
     }
 
     [Fact]
@@ -70,7 +69,7 @@ public sealed class DocumentAnalysisResponseParserTests
 
         var act = () => DocumentAnalysisResponseParser.Parse(json);
 
-        act.Should().Throw<DocumentProcessor.Application.Common.Exceptions.DocumentAnalysisException>();
+        Assert.ThrowsAny<DocumentProcessor.Application.Common.Exceptions.DocumentAnalysisException>(act);
     }
 
     [Fact]
@@ -80,6 +79,6 @@ public sealed class DocumentAnalysisResponseParserTests
 
         var act = () => DocumentAnalysisResponseParser.Parse(json);
 
-        act.Should().Throw<DocumentProcessor.Application.Common.Exceptions.DocumentAnalysisException>();
+        Assert.ThrowsAny<DocumentProcessor.Application.Common.Exceptions.DocumentAnalysisException>(act);
     }
 }

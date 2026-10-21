@@ -17,8 +17,15 @@
 !.env.example
 **/appsettings.*.json
 **/launchSettings.*.json
+**/local.settings*.json
 **/secrets.json
 **/secrets/
+**/.secrets/
+*.local.*
+*.secret
+*.secret.*
+*.secrets
+*.secrets.*
 *api_key*
 *apikey*
 *credential*
@@ -33,6 +40,8 @@
 *.db-shm
 *.db-wal
 *.log
+*.tmp
+*.bak
 TestResults/
 coverage/
 tmp/

@@ -1,5 +1,4 @@
 using DocumentProcessor.Domain.Documents;
-using FluentAssertions;
 
 namespace DocumentProcessor.Domain.Tests.Documents;
 
@@ -21,7 +20,7 @@ public sealed class DocumentTests
             CreateMetrics(),
             now.AddSeconds(1));
 
-        act.Should().Throw<InvalidOperationException>();
+        Assert.ThrowsAny<InvalidOperationException>(act);
     }
 
     [Fact]
@@ -38,10 +37,10 @@ public sealed class DocumentTests
         document.StartProcessing(now);
         document.Complete(CreateAnalysis(), CreateMetrics(), now.AddSeconds(1));
 
-        document.Status.Should().Be(DocumentStatus.Completed);
-        document.Analysis.Should().NotBeNull();
-        document.ProcessingMetadata.Should().NotBeNull();
-        document.FailureReason.Should().BeNull();
+        Assert.Equal(DocumentStatus.Completed, document.Status);
+        Assert.NotNull(document.Analysis);
+        Assert.NotNull(document.ProcessingMetadata);
+        Assert.Null(document.FailureReason);
     }
 
     private static DocumentAnalysis CreateAnalysis() =>

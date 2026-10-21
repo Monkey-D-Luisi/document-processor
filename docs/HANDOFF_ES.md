@@ -100,9 +100,23 @@ estado de revisión y telemetría.
 3. Añadir autenticación, autorización, retención/borrado y controles de
    operación antes de exponer la aplicación a terceros o cargar documentos
    reales.
-4. Revisar el requisito de licencia de MediatR para cualquier uso en
-   producción; el arranque local informa que la licencia de desarrollo no
-   cubre producción.
+4. Resolver la licencia del repositorio antes de hacerlo público: no existe un
+   archivo `LICENSE` en la raíz. La visibilidad pública permite ver y bifurcar
+   el repositorio, pero no concede por sí sola permiso general para reutilizar
+   o redistribuir el código.
+5. Revisar la compatibilidad entre la licencia elegida para el proyecto y
+   MediatR 14.1.0. Sus términos actuales ofrecen una ruta RPL-1.5 para código
+   fuente y una licencia comercial alternativa. Para servicios a clientes, la
+   elegibilidad de la licencia comunitaria depende también del cliente; no se
+   debe asumir que la licencia del consultor cubre el producto del cliente.
+6. Confirmar que el nombre humano mostrado como autor del commit inicial es
+   intencional antes de publicar el historial. El email del commit es una
+   dirección `noreply` de GitHub.
+
+La auditoría de preparación pública y su checklist están en
+[`PUBLIC-RELEASE-READINESS.md`](PUBLIC-RELEASE-READINESS.md). La comprobación
+de seguridad gestionada quedó pendiente porque el entorno de escaneo no pudo
+iniciar un worker de solo lectura sin un perfil de permisos administrado.
 
 Antiforgery protege el formulario del navegador frente a CSRF, pero no
 autentica usuarios. La API y su endpoint de lectura deben permanecer locales

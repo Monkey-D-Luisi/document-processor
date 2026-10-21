@@ -169,6 +169,23 @@ the synthetic evaluation set. See [docs/DEMO-CHECKLIST.md](docs/DEMO-CHECKLIST.m
 [docs/HANDOFF_ES.md](docs/HANDOFF_ES.md) and the
 [evaluation report](docs/MODEL-EVALUATION-2026-10-21.md).
 
+## License status
+
+There is currently no project-level `LICENSE` file. Under
+[GitHub's repository licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository),
+public visibility permits viewing and forking under its Terms of Service, while
+the default copyright rules otherwise retain the owner's rights; it does not
+grant general permission to reuse or redistribute this project. Choose and add
+a project license before describing the repository as open source.
+
+The application uses MediatR 14.1.0. Its package terms cover MediatR 13.0.0 and
+later and provide an RPL-1.5 source license or a separate commercial license.
+Review compatibility with the project's chosen license before publishing the
+source. Before using the application for a customer or in production, confirm
+the applicable license path with that customer and Lucky Penny Software. The
+test projects use xUnit assertions and do not depend on FluentAssertions.
+See [the public release readiness audit](docs/PUBLIC-RELEASE-READINESS.md).
+
 ## Out of scope
 
 Email ingestion, n8n, ERP integrations, workflow builders and unrelated

@@ -2,7 +2,6 @@ using DocumentProcessor.Application.Common.Exceptions;
 using DocumentProcessor.Application.Common.Interfaces;
 using DocumentProcessor.Application.Documents.Services;
 using DocumentProcessor.Domain.Documents;
-using FluentAssertions;
 
 namespace DocumentProcessor.Application.Tests.Documents;
 
@@ -13,8 +12,8 @@ public sealed class DocumentAnalysisPolicyTests
     {
         var analysis = DocumentAnalysisPolicy.Build(CreateCandidate());
 
-        analysis.RequiresReview.Should().BeFalse();
-        analysis.Issues.Should().BeEmpty();
+        Assert.False(analysis.RequiresReview);
+        Assert.Empty(analysis.Issues);
     }
 
     [Fact]
@@ -35,10 +34,10 @@ public sealed class DocumentAnalysisPolicyTests
 
         var analysis = DocumentAnalysisPolicy.Build(candidate);
 
-        analysis.RequiresReview.Should().BeFalse();
-        analysis.HeaderDiscount.Should().Be(new DocumentAdjustment(10m, 9m));
-        analysis.Surcharges.Should().ContainSingle();
-        analysis.Withholdings.Should().ContainSingle();
+        Assert.False(analysis.RequiresReview);
+        Assert.Equal(new DocumentAdjustment(10m, 9m), analysis.HeaderDiscount);
+        Assert.Single(analysis.Surcharges);
+        Assert.Single(analysis.Withholdings);
     }
 
     [Fact]
@@ -48,8 +47,8 @@ public sealed class DocumentAnalysisPolicyTests
 
         var analysis = DocumentAnalysisPolicy.Build(candidate);
 
-        analysis.RequiresReview.Should().BeTrue();
-        analysis.Issues.Should().Contain(issue => issue.Code == "total_mismatch");
+        Assert.True(analysis.RequiresReview);
+        Assert.Contains(analysis.Issues, issue => issue.Code == "total_mismatch");
     }
 
     [Fact]
@@ -62,7 +61,7 @@ public sealed class DocumentAnalysisPolicyTests
 
         var analysis = DocumentAnalysisPolicy.Build(candidate);
 
-        analysis.Issues.Should().Contain(issue =>
+        Assert.Contains(analysis.Issues, issue =>
             issue.Code == "line_tax_mismatch" && issue.Field == "taxAmount" && issue.LineIndex == 1);
     }
 
@@ -83,7 +82,7 @@ public sealed class DocumentAnalysisPolicyTests
 
         var analysis = DocumentAnalysisPolicy.Build(candidate);
 
-        analysis.RequiresReview.Should().BeFalse();
+        Assert.False(analysis.RequiresReview);
     }
 
     [Fact]
@@ -91,8 +90,8 @@ public sealed class DocumentAnalysisPolicyTests
     {
         var analysis = DocumentAnalysisPolicy.Build(CreateCandidate(currency: "ABC"));
 
-        analysis.RequiresReview.Should().BeTrue();
-        analysis.Issues.Should().Contain(issue => issue.Code == "unsupported_currency");
+        Assert.True(analysis.RequiresReview);
+        Assert.Contains(analysis.Issues, issue => issue.Code == "unsupported_currency");
     }
 
     [Fact]
@@ -105,9 +104,9 @@ public sealed class DocumentAnalysisPolicyTests
             total: null,
             lines: []));
 
-        analysis.RequiresReview.Should().BeTrue();
-        analysis.Issues.Should().Contain(issue => issue.Code == "missing_required_field" && issue.Field == "currency");
-        analysis.Issues.Should().Contain(issue => issue.Code == "missing_required_field" && issue.Field == "total");
+        Assert.True(analysis.RequiresReview);
+        Assert.Contains(analysis.Issues, issue => issue.Code == "missing_required_field" && issue.Field == "currency");
+        Assert.Contains(analysis.Issues, issue => issue.Code == "missing_required_field" && issue.Field == "total");
     }
 
     [Fact]
@@ -119,8 +118,8 @@ public sealed class DocumentAnalysisPolicyTests
             total: null,
             lines: [new DocumentLineCandidate("", null, null, null, null)]));
 
-        analysis.Lines.Should().ContainSingle().Which.Description.Should().BeEmpty();
-        analysis.Issues.Should().Contain(issue => issue.Code == "missing_line_description" && issue.LineIndex == 1);
+        Assert.Equal(string.Empty, Assert.Single(analysis.Lines).Description);
+        Assert.Contains(analysis.Issues, issue => issue.Code == "missing_line_description" && issue.LineIndex == 1);
     }
 
     [Fact]
@@ -136,7 +135,7 @@ public sealed class DocumentAnalysisPolicyTests
 
         var analysis = DocumentAnalysisPolicy.Build(candidate);
 
-        analysis.RequiresReview.Should().BeFalse();
+        Assert.False(analysis.RequiresReview);
     }
 
     [Fact]
@@ -147,16 +146,16 @@ public sealed class DocumentAnalysisPolicyTests
 
         var act = () => DocumentAnalysisPolicy.Build(candidate);
 
-        act.Should().Throw<DocumentAnalysisException>();
+        Assert.ThrowsAny<DocumentAnalysisException>(act);
     }
 
     [Fact]
     public void Currency_snapshot_contains_zero_two_and_three_fraction_digits()
     {
-        CurrencyMinorUnitCatalog.TryGetMinorUnit("JPY", out var zero).Should().BeTrue();
-        CurrencyMinorUnitCatalog.TryGetMinorUnit("EUR", out var two).Should().BeTrue();
-        CurrencyMinorUnitCatalog.TryGetMinorUnit("KWD", out var three).Should().BeTrue();
-        (zero, two, three).Should().Be((0, 2, 3));
+        Assert.True(CurrencyMinorUnitCatalog.TryGetMinorUnit("JPY", out var zero));
+        Assert.True(CurrencyMinorUnitCatalog.TryGetMinorUnit("EUR", out var two));
+        Assert.True(CurrencyMinorUnitCatalog.TryGetMinorUnit("KWD", out var three));
+        Assert.Equal((0, 2, 3), (zero, two, three));
     }
 
     private static DocumentAnalysisCandidate CreateCandidate(
