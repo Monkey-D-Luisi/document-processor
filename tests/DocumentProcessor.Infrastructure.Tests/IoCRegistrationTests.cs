@@ -1,9 +1,9 @@
 using DocumentProcessor.Application.Common.DependencyInjection;
-using DocumentProcessor.Application.Common.Interfaces;
-using DocumentProcessor.Application.Common.Models;
-using DocumentProcessor.Application.Documents.Services;
-using DocumentProcessor.Domain.Repositories;
-using DocumentProcessor.Infrastructure.AI;
+using DocumentProcessor.Application.Documents.Analysis.Ports;
+using DocumentProcessor.Application.Documents.Analysis.Services;
+using DocumentProcessor.Application.Documents.Analysis.Models;
+using DocumentProcessor.Domain.Documents.Repositories;
+using DocumentProcessor.Infrastructure.Documents.Analysis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;

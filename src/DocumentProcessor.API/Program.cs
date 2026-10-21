@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
-using DocumentProcessor.API.Endpoints;
-using DocumentProcessor.Application.Common.Files;
+using DocumentProcessor.API.Documents.Endpoints;
+using DocumentProcessor.Application.Documents.Files;
 using Microsoft.AspNetCore.Http.Features;
 using DocumentProcessor.API.Errors;
 using DocumentProcessor.Application;

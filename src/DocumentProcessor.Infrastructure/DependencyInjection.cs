@@ -1,7 +1,7 @@
-using DocumentProcessor.Application.Common.Interfaces;
-using DocumentProcessor.Application.Common.Models;
-using DocumentProcessor.Domain.Repositories;
-using DocumentProcessor.Infrastructure.AI;
+using DocumentProcessor.Application.Documents.Analysis.Ports;
+using DocumentProcessor.Application.Documents.Analysis.Models;
+using DocumentProcessor.Domain.Documents.Repositories;
+using DocumentProcessor.Infrastructure.Documents.Analysis;
 using DocumentProcessor.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

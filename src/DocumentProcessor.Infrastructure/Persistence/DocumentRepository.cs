@@ -2,7 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using DocumentProcessor.Application.Common.DependencyInjection;
 using DocumentProcessor.Domain.Documents;
-using DocumentProcessor.Domain.Repositories;
+using DocumentProcessor.Domain.Documents.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace DocumentProcessor.Infrastructure.Persistence;
