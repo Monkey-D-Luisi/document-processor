@@ -1,11 +1,13 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DocumentProcessor.Application.Common.DependencyInjection;
 using DocumentProcessor.Domain.Documents;
 using DocumentProcessor.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace DocumentProcessor.Infrastructure.Persistence;
 
+[IoC(typeof(IDocumentRepository), IoCLifetime.Scoped)]
 internal sealed class DocumentRepository(AppDbContext dbContext)
     : IDocumentRepository
 {

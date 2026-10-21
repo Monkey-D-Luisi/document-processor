@@ -1,4 +1,5 @@
 using DocumentProcessor.Application.Common.Interfaces;
+using DocumentProcessor.Application.Common.Models;
 using DocumentProcessor.Domain.Repositories;
 using DocumentProcessor.Infrastructure.AI;
 using DocumentProcessor.Infrastructure.Persistence;
@@ -29,7 +30,17 @@ public static class DependencyInjection
                 npgsql => npgsql.MigrationsAssembly(
                     typeof(AppDbContext).Assembly.FullName)));
 
-        services.AddScoped<IDocumentRepository, DocumentRepository>();
+        services
+            .AddOptions<DocumentAnalysisProviderOptions>()
+            .Bind(configuration.GetSection(DocumentAnalysisProviderOptions.SectionName))
+            .Validate(options => DocumentAnalysisProviderTypeCodec.TryParse(options.Provider, out _),
+                "DocumentAnalysis:Provider must be a supported provider ID.")
+            .ValidateOnStart();
+
+        services.AddSingleton(
+            typeof(DocumentAnalysisProviderType),
+            serviceProvider => DocumentAnalysisProviderTypeCodec.Parse(
+                serviceProvider.GetRequiredService<IOptions<DocumentAnalysisProviderOptions>>().Value.Provider));
 
         services
             .AddOptions<OpenAiDocumentOptions>()
@@ -63,9 +74,10 @@ public static class DependencyInjection
                 });
         });
 
-        services.AddSingleton<IOpenAiResponsesClient, OpenAiResponsesClient>();
-        services.AddScoped<IDocumentAnalyzer, OpenAiDocumentAnalyzer>();
         services.AddSingleton<TimeProvider>(TimeProvider.System);
+        services.AddAttributedServices(
+            typeof(DocumentProcessor.Application.DependencyInjection).Assembly,
+            typeof(DependencyInjection).Assembly);
 
         return services;
     }
