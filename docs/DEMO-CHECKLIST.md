@@ -18,7 +18,7 @@
 - [x] Browser demo UI with antiforgery token, result breakdown and review state.
 - [x] Synthetic unit and API TestServer coverage using fake provider/repository
   dependencies where appropriate.
-- [x] Release build and tests passed: 56/56 tests; Node syntax check passed;
+- [x] Release build and tests passed: 57/57 tests; Node syntax check passed;
   local NuGet vulnerability audit reported no vulnerable packages.
 - [x] Local browser smoke check: page and antiforgery endpoint returned HTTP
   200; browser UI rendered without console errors or warnings.
@@ -45,7 +45,7 @@
 
 ## Verification boundaries
 
-The 56 automated tests remain isolated from live services. The ten successful
+The 57 automated tests remain isolated from live services. The ten successful
 OpenAI responses and database writes are local acceptance evidence, not proof
 of performance on customer documents. One image submission failed before the
 provider call because the SDK requires an image MIME type on `BinaryData`; the

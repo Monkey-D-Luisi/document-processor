@@ -9,6 +9,10 @@ documentos sintéticos. El proveedor se selecciona de forma independiente con
 `DocumentAnalysis:Provider`; actualmente solo se implementa `openai`. No se ha
 publicado ni desplegado nada.
 
+Mejora futura: al añadir otro proveedor, hacer que la validación de opciones y
+la construcción del cliente SDK de OpenAI dependan de seleccionar `openai`,
+para que los demás proveedores no requieran configuración de OpenAI.
+
 El código propio del proyecto se licencia bajo MIT, con titular `Monkey-D-Luisi`
 y año 2026. MediatR 12.5.0 mantiene su licencia Apache-2.0 independiente,
 declarada en los metadatos oficiales de NuGet; la licencia MIT del proyecto no
@@ -22,8 +26,11 @@ versión implica aceptar y vigilar ese riesgo.
 - `dotnet restore .\DocumentProcessor.sln`: correcto.
 - `dotnet build .\DocumentProcessor.sln --configuration Release`: correcto,
   cero warnings y errores.
-- `dotnet test .\DocumentProcessor.sln --configuration Release`: 56 pruebas
+- `dotnet test .\DocumentProcessor.sln --configuration Release`: 57 pruebas
   correctas.
+- La prueba de composición inicia el host HTTP en entorno `Testing`, consulta
+  antiforgery y resuelve `IDocumentAnalyzer` → `ConfiguredDocumentAnalyzer` →
+  factory → `OpenAiDocumentAnalyzer` con una clave ficticia, sin llamar a OpenAI.
 - `node --check .\src\DocumentProcessor.API\wwwroot\app.js`: correcto.
 - `dotnet list .\DocumentProcessor.sln package --vulnerable
   --include-transitive`: no encontró paquetes vulnerables.

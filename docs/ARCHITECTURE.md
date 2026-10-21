@@ -103,6 +103,11 @@ as a calibrated probability.
 provider is implemented. The Application use case continues to depend only on
 `IDocumentAnalyzer`.
 
+When another provider is added, make OpenAI options validation and SDK client
+construction conditional on selecting `openai`. The current host validates
+OpenAI configuration at startup even when a different provider is selected;
+that should not become a requirement for other providers.
+
 The Infrastructure adapter sends PDF/image input through the Responses API and
 requests a strict JSON Schema result. Provider output is parsed as a candidate;
 it does not bypass application policy. Provider failures are mapped to stable

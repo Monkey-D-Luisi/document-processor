@@ -162,7 +162,7 @@ retention/deletion rules, appropriate encryption and operational controls.
 
 ## Verification status
 
-The Release solution builds with zero warnings/errors and 56/56 automated tests
+The Release solution builds with zero warnings/errors and 57/57 automated tests
 pass. Node syntax checks and the local NuGet vulnerability audit passed. Docker
 PostgreSQL is healthy; migrations and 10 successful synthetic document writes
 were verified, with one failed database record from the earlier local image
