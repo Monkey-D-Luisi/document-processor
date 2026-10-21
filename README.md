@@ -176,7 +176,7 @@ responses; the extra upload attempt failed locally before any provider request
 and produced no usage tokens. API compatibility and extraction have therefore
 been checked with both configured models, but acceptance remains limited to
 the synthetic evaluation set. See [docs/DEMO-CHECKLIST.md](docs/DEMO-CHECKLIST.md),
-[docs/HANDOFF_ES.md](docs/HANDOFF_ES.md) and the
+[docs/HANDOFF.md](docs/HANDOFF.md) and the
 [evaluation report](docs/MODEL-EVALUATION-2026-10-21.md).
 
 GitHub Actions runs restore, Release build, the full test suite and a transitive
