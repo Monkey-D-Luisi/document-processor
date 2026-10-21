@@ -54,5 +54,5 @@ document row has no provider usage. `gpt-6-luna` is the default based on equal
 accuracy and lower estimated cost in this small set, despite higher measured
 latency. Antiforgery does not replace user authentication.
 
-See [HANDOFF_ES.md](HANDOFF_ES.md) for the PowerShell startup commands and
+See [HANDOFF.md](HANDOFF.md) for the PowerShell startup commands and
 current handoff details.
