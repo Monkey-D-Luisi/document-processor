@@ -8,9 +8,12 @@ sigue disponible mediante configuración. La comparación utilizó exclusivament
 documentos sintéticos. No se ha publicado ni desplegado nada.
 
 El código propio del proyecto se licencia bajo MIT, con titular `Monkey-D-Luisi`
-y año 2026. MediatR 14.1.0 mantiene condiciones de licencia independientes.
-La compatibilidad para publicar este repositorio completo bajo MIT sigue sin
-confirmarse y debe resolverse antes de cambiar la visibilidad.
+y año 2026. MediatR 12.5.0 mantiene su licencia Apache-2.0 independiente,
+declarada en los metadatos oficiales de NuGet; la licencia MIT del proyecto no
+la sustituye. Esta combinación no presenta un bloqueo de licencia identificado
+para publicar el código del proyecto. MediatR 12 y anteriores no reciben
+garantías de soporte ni correcciones del mantenedor, por lo que mantener esta
+versión implica aceptar y vigilar ese riesgo.
 
 ## Verificación realizada el 21/10/2026
 
@@ -22,6 +25,11 @@ confirmarse y debe resolverse antes de cambiar la visibilidad.
 - `node --check .\src\DocumentProcessor.API\wwwroot\app.js`: correcto.
 - `dotnet list .\DocumentProcessor.sln package --vulnerable
   --include-transitive`: no encontró paquetes vulnerables.
+- La compilación Release terminó con 0 advertencias y 0 errores; los cuatro
+  proyectos de tests pasaron 38/38 pruebas.
+- MediatR 12.5.0 compila y pasa las pruebas en `net10.0`; su paquete declara
+  compatibilidad desde .NET 6 / .NET Standard 2.0. El grafo restaurado no
+  contiene MediatR 13 ni 14.
 - Docker PostgreSQL está saludable. La migración de Development se aplicó y
   `/health` devolvió HTTP 200. La base tiene 10 documentos `Completed` y un
   documento `Failed` de la primera subida de imagen.
@@ -105,23 +113,11 @@ estado de revisión y telemetría.
 3. Añadir autenticación, autorización, retención/borrado y controles de
    operación antes de exponer la aplicación a terceros o cargar documentos
    reales.
-4. Resolver el bloqueo de compatibilidad de licencias antes de hacerlo
-   público. La raíz ya contiene la licencia MIT para el código propio, pero
-   MediatR 14.1.0 tiene términos separados: su fuente se ofrece bajo RPL-1.5 y
-   el acuerdo comercial no concede derechos de redistribución de su código
-   fuente. La compatibilidad de publicar bajo MIT un repositorio que depende
-   de MediatR no está confirmada. Obtener una autorización escrita de Lucky
-   Penny Software o resolver la combinación de licencias antes de publicar.
-5. Si el uso es de producción, registrar al desarrollador/organización en
-   MediatR.io, verificar elegibilidad Community y obtener la clave. El acuerdo
-   Community exige ingresos anuales inferiores a USD 5 millones, no más de USD
-   10 millones de capital externo y excluye gobiernos y ciertos usos
-   operativos universitarios; los trabajos para clientes dependen de que el
-   cliente también califique. MediatR 14.1.0 recibe la clave en
-   `cfg.LicenseKey` al registrar `AddMediatR`; esta demo aún no la lee desde
-   configuración. Desarrollo, CI y staging no requieren clave. No guardarla
-   en Git.
-6. Confirmar que el nombre humano mostrado como autor del commit inicial es
+4. Aceptar explícitamente el riesgo de mantener MediatR 12.5.0 sin soporte ni
+   correcciones del fabricante y vigilar avisos de seguridad. Si ese riesgo
+   deja de ser aceptable, valorar una alternativa mantenida antes de actualizar
+   a MediatR 13 o posterior, cuya licencia debe revisarse por separado.
+5. Confirmar que el nombre humano mostrado como autor del commit inicial es
    intencional antes de publicar el historial. El email del commit es una
    dirección `noreply` de GitHub.
 

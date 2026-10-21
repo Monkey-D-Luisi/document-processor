@@ -176,29 +176,17 @@ see [LICENSE](LICENSE) for the 2026 copyright notice. Third-party dependencies
 retain their own terms. The test projects use native xUnit assertions and do
 not depend on FluentAssertions.
 
-MediatR 14.1.0 has separate licensing terms and is not relicensed by this
-project's MIT license. Lucky Penny Software publishes MediatR source under
-RPL-1.5 and offers a separate contractual license path. Its current agreement
-defines distribution rights broadly and does not grant source redistribution
-rights under the commercial agreement. The compatibility of publishing this
-dependent source repository under MIT has not been established; obtain written
-confirmation from Lucky Penny Software before making the repository public.
-This is a release blocker while MediatR 14.1.0 and the MIT project license are
-both retained.
-
-The Community License is available only while the developer or organization
-meets the vendor's current eligibility rules: annual revenue below USD 5
-million, no more than USD 10 million in outside capital, and not a government
-or quasi-government agency; higher-education operational use is also excluded.
-For client work, the end client's eligibility applies. Register through the
-[MediatR pricing page](https://mediatr.io/) and follow the vendor's account
-registration to obtain the license key. Development, CI and staging do not
-require a key; production deployments do. MediatR 14.1.0 accepts the key via
-`cfg.LicenseKey` during `AddMediatR` registration. This local demo does not yet
-wire a production license key from configuration, so a production host must
-connect its secret store to that setting before deployment. Never commit the
-key. See the [vendor FAQ](https://luckypennysoftware.com/faq) and the
-[public release readiness audit](docs/PUBLIC-RELEASE-READINESS.md) for details.
+The application pins MediatR 12.5.0, whose package metadata declares
+[Apache-2.0](https://packages.nuget.org/packages/MediatR/12.5.0). The root MIT
+license applies to project-owned work and does not relicense MediatR. The
+upstream maintainer states that MediatR 12 and earlier receive no support
+guarantees, bug fixes or security fixes; this is a maintenance risk to accept
+and monitor, not a license requirement. MediatR 12.5.0 targets .NET 6 and .NET
+Standard 2.0 and is compatible with this .NET 10 application. The restored
+dependency graph contains MediatR 12.5.0 and MediatR.Contracts 2.0.1 only; no
+MediatR 13/14 package is present. See the
+[maintainer's support statement](https://github.com/LuckyPennySoftware/MediatR/discussions/1123)
+and the [public release readiness audit](docs/PUBLIC-RELEASE-READINESS.md).
 
 ## Out of scope
 
